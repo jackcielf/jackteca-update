@@ -13,7 +13,7 @@ export class ThoughtService {
   constructor(private http: HttpClient) {}
 
   // Lista o array de thought
-  list(page: number, filtro: string): Observable<Thought[]> {
+  list(page: number, filtro: string, favoritos: boolean): Observable<Thought[]> {
     // GET posts?_page=7&_limit=20
     const itemsForPage = 6;
 
@@ -24,8 +24,12 @@ export class ThoughtService {
     // A função 'trim()' desconsidera todos os espacos da palavra
     if (filtro.trim().length > 2) {
       parametros = parametros.set('q', filtro);
-    } else {
+    } 
+
+    if(favoritos) {
+      parametros = parametros.set("favorito", true)
     }
+
     // return this.http.get<Thought[]>(`${this.API}?_page=${page}&_limit=${itemsForPage}`); // Paginator
     return this.http.get<Thought[]>(this.API, { params: parametros }); // Paginator
   }
