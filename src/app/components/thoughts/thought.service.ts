@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 // import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ThoughtService {
   private readonly API = 'http://localhost:3000/thought';
@@ -13,14 +13,21 @@ export class ThoughtService {
   constructor(private http: HttpClient) {}
 
   // Lista o array de thought
-  list(page: number): Observable<Thought[]> {
+  list(page: number, filtro: string): Observable<Thought[]> {
     // GET posts?_page=7&_limit=20
     const itemsForPage = 6;
 
-    let parametros = new HttpParams().set("_page", page).set("_limit", itemsForPage);
+    let parametros = new HttpParams()
+      .set('_page', page)
+      .set('_limit', itemsForPage);
 
+    // A função 'trim()' desconsidera todos os espacos da palavra
+    if (filtro.trim().length > 2) {
+      parametros = parametros.set('q', filtro);
+    } else {
+    }
     // return this.http.get<Thought[]>(`${this.API}?_page=${page}&_limit=${itemsForPage}`); // Paginator
-    return this.http.get<Thought[]>(this.API, {params: parametros}); // Paginator
+    return this.http.get<Thought[]>(this.API, { params: parametros }); // Paginator
   }
 
   // Cria um thought
