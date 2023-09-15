@@ -35,8 +35,9 @@ export class EditThoughtComponent implements OnInit {
         Validators.compose([Validators.required, Validators.minLength(3)]),
       ],
       modelo: [''],
+      favorito: [false],
     });
-    
+
     this.service.searchId(Number(id)).subscribe((thought) => {
       this.form = this.formBuilder.group({
         id: [thought.id],
@@ -52,6 +53,7 @@ export class EditThoughtComponent implements OnInit {
           Validators.compose([Validators.required, Validators.minLength(3)]),
         ],
         modelo: [thought.modelo],
+        favorito: [thought.favorito],
       });
     });
   }

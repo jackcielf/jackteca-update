@@ -10,6 +10,7 @@ export class CardThoughtComponent {
     conteudo: '',
     autoria: '',
     modelo: '',
+    favorito: false,
   };
 
   constructor() {}
@@ -21,5 +22,12 @@ export class CardThoughtComponent {
       return 'thought-g';
     }
     return 'thought-p';
+  }
+
+  changeIconFavorite(): string {
+    if (this.thought.favorito === false) {
+      return 'inativo';
+    }
+    return 'ativo';
   }
 }
