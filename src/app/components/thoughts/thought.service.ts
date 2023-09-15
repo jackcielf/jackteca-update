@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import Thought from 'src/app/Thought';
 import { Observable } from 'rxjs';
 // import { environment } from 'src/environments/environment';
@@ -16,7 +16,11 @@ export class ThoughtService {
   list(page: number): Observable<Thought[]> {
     // GET posts?_page=7&_limit=20
     const itemsForPage = 6;
-    return this.http.get<Thought[]>(`${this.API}?_page=${page}&_limit=${itemsForPage}`); // Paginator
+
+    let parametros = new HttpParams().set("_page", page).set("_limit", itemsForPage);
+
+    // return this.http.get<Thought[]>(`${this.API}?_page=${page}&_limit=${itemsForPage}`); // Paginator
+    return this.http.get<Thought[]>(this.API, {params: parametros}); // Paginator
   }
 
   // Cria um thought

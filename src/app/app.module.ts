@@ -13,6 +13,7 @@ import { CardThoughtComponent } from './components/thoughts/card-thought/card-th
 import { CreateThoughtComponent } from './components/thoughts/create-thought/create-thought.component';
 import { DeleteThoughtComponent } from './components/thoughts/delete-thought/delete-thought.component';
 import { ListThoughtsComponent } from './components/thoughts/list-thoughts/list-thoughts.component';
+import { ButtonReadMoreComponent } from './components/list-thoughts/button-read-more/button-read-more.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ListThoughtsComponent } from './components/thoughts/list-thoughts/list-
     CardThoughtComponent,
     CreateThoughtComponent,
     DeleteThoughtComponent,
-    ListThoughtsComponent
+    ListThoughtsComponent,
+    ButtonReadMoreComponent
   ],
   imports: [
     BrowserModule,

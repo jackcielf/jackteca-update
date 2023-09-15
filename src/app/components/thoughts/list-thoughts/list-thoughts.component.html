@@ -1,16 +1,22 @@
 <section class="container">
-    <header class="header d-flex">
-        <h2 class="ff-inter">Meu mural</h2>
-        <button class="botao" routerLink="/create-thought">Adicionar pensamento</button>
-    </header>
-    <div class="mural" *ngIf="listThoughts.length > 0, else semPensamentos">
-        <div *ngFor="let thought of listThoughts">
-            <app-card-thought [thought]="thought"></app-card-thought>
-        </div>
+  <header class="header d-flex">
+    <h2 class="ff-inter">Meu mural</h2>
+    <button class="botao" routerLink="/create-thought">
+      Adicionar pensamento
+    </button>
+  </header>
+  <div class="mural" *ngIf="listThoughts.length > 0; else noThoughts">
+    <div *ngFor="let thought of listThoughts">
+      <app-card-thought [thought]="thought"></app-card-thought>
     </div>
+  </div>
 </section>
-<ng-template #semPensamentos>
-    <div class="ff-inter sem-pensamentos">
-        <p>Ainda não há pensamentos cadastrados!</p>
-    </div>
+<app-button-read-more
+  [haMoreThoughts]="haMoreThoughts"
+  (click)="readMoreThoughts()"
+></app-button-read-more>
+<ng-template #noThoughts>
+  <div class="ff-inter sem-pensamentos">
+    <p>Ainda não há pensamentos cadastrados!</p>
+  </div>
 </ng-template>

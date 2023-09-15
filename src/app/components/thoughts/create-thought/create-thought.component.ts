@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./create-thought.component.css'],
 })
 export class CreateThoughtComponent implements OnInit {
-  form: any;
+  form!: FormGroup;
 
   constructor(
     private service: ThoughtService,

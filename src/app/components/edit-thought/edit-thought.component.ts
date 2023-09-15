@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./edit-thought.component.css'],
 })
 export class EditThoughtComponent implements OnInit {
-  form: any;
+  form!: FormGroup;
 
   constructor(
     private service: ThoughtService,
@@ -21,6 +21,22 @@ export class EditThoughtComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+    this.form = this.formBuilder.group({
+      id: [''],
+      conteudo: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern(/(.|\s)*\S(.|\s)*/),
+        ]),
+      ],
+      autoria: [
+        '',
+        Validators.compose([Validators.required, Validators.minLength(3)]),
+      ],
+      modelo: [''],
+    });
+    
     this.service.searchId(Number(id)).subscribe((thought) => {
       this.form = this.formBuilder.group({
         id: [thought.id],
@@ -43,6 +59,7 @@ export class EditThoughtComponent implements OnInit {
   editThought(): void {
     this.service.edit(this.form.value).subscribe(() => {
       this.router.navigate(['/list-thought']);
+      console.log(this.form);
     });
   }
 
