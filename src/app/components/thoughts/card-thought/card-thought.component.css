@@ -1,0 +1,65 @@
+.acoes {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .botao-excluir {
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-top: 10px;
+  }
+  
+  .botao-editar {
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+  
+  .thought {
+    background-color: #f8f9fe;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .thought .conteudo {
+    margin: 1rem auto;
+    word-wrap: break-word;
+  }
+  
+  .thought .autoria {
+    word-wrap: break-word;
+  }
+  
+  .modelo1 {
+    box-shadow: 8px 8px 0px #154580;
+  }
+  
+  .modelo2 {
+    box-shadow: 8px 8px 0px #6bd1ff;
+  }
+  
+  .modelo3 {
+    box-shadow: 8px 8px 0px #84eec1;
+  }
+  
+  .thought-g {
+    width: 556px;
+  }
+  
+  .thought-p {
+    width: 262px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .thought-g {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 426px) {
+    .thought-p {
+      width: 100%;
+    }
+  }
+  
