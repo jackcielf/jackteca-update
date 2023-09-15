@@ -11,7 +11,7 @@
         formControlName="conteudo"
         placeholder="Digite um pensamento"
       />
-      <div class="message__erro" *ngIf="form.get('conteudo')?.errors">
+      <div class="message__erro" *ngIf="form.get('conteudo')?.errors && form.get('conteudo')?.touched">
         Pensamento é obrigatório!
       </div>
       <label for="autoria">Autoria ou fonte</label>
@@ -22,10 +22,10 @@
         formControlName="autoria"
         placeholder="Digite um autoria ou fonte"
       />
-      <div class="message__erro" *ngIf="form.get('conteudo')?.errors?.['required']">
+      <div class="message__erro" *ngIf="form.get('autoria')?.errors?.['required'] && form.get('autoria')?.touched" >
         Autoria é obrigatório!
       </div>
-      <div class="message__erro" *ngIf="form.get('conteudo')?.errors?.['minlength']">
+      <div class="message__erro" *ngIf="form.get('autoria')?.errors?.['minlength'] && form.get('autoria')?.touched">
         Autoria é precisa ter no mínimo 3 caracteres!
       </div>
       <label for="modelo">Selecione o modelo do card:</label>
@@ -108,7 +108,10 @@
       </div>
   
       <div class="acoes">
-        <button (click)="createThought()" class="botao">Salvar</button>
+        <button 
+          [disabled]="!form.valid"
+          (click)="createThought()"
+          [ngClass]="habilitarButton()">Salvar</button>
         <button
           (click)="cancelThought()"
           class="botao"

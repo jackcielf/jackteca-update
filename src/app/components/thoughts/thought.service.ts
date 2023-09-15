@@ -13,8 +13,10 @@ export class ThoughtService {
   constructor(private http: HttpClient) {}
 
   // Lista o array de thought
-  list(): Observable<Thought[]> {
-    return this.http.get<Thought[]>(this.API); // Pega toda a lista de pensamentos da API
+  list(page: number): Observable<Thought[]> {
+    // GET posts?_page=7&_limit=20
+    const itemsForPage = 6;
+    return this.http.get<Thought[]>(`${this.API}?_page=${page}&_limit=${itemsForPage}`); // Paginator
   }
 
   // Cria um thought

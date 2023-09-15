@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./create-thought.component.css'],
 })
 export class CreateThoughtComponent implements OnInit {
-  form: any; 
+  form: any;
 
   constructor(
     private service: ThoughtService,
@@ -46,4 +46,12 @@ export class CreateThoughtComponent implements OnInit {
   }
 
   cancelThought(): void {}
+
+  habilitarButton(): string {
+    if (this.form.valid) {
+      return 'botao';
+    } else {
+      return 'botao__desabilitado';
+    }
+  }
 }
