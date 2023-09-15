@@ -47,6 +47,13 @@ export class ThoughtService {
     return this.http.put<Thought>(url, thought);
   }
 
+  changeFavorite(thought: Thought): Observable<Thought> {
+    thought.favorito = !thought.favorito;
+    // const url = `${this.API}/${thought.id}`;
+    // return this.http.put<Thought>(url, thought);
+    return this.edit(thought);
+  }
+
   // Procura um thought pelo ID
   searchId(id: number): Observable<Thought> {
     const url = `${this.API}/${id}`;

@@ -12,7 +12,7 @@
       "conteudo": "Aprendendo a modelar uma arquivo json",
       "autoria": "Jack",
       "modelo": "modelo2",
-      "favorito": true
+      "favorito": false
     },
     {
       "id": 3,

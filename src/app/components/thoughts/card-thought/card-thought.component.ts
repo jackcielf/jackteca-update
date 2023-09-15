@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import Thought from 'src/app/Thought';
+import { ThoughtService } from '../thought.service';
 @Component({
   selector: 'app-card-thought',
   templateUrl: './card-thought.component.html',
@@ -13,7 +14,7 @@ export class CardThoughtComponent {
     favorito: false,
   };
 
-  constructor() {}
+  constructor(private service: ThoughtService) {}
 
   ngOnInit(): void {}
 
@@ -29,5 +30,9 @@ export class CardThoughtComponent {
       return 'inativo';
     }
     return 'ativo';
+  }
+
+  updateFavorite(): void {
+    this.service.changeFavorite(this.thought).subscribe();
   }
 }
